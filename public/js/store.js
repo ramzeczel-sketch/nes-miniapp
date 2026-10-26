@@ -38,6 +38,8 @@
     return x(h1) + x(h2) + x(f) + x(u.length);
   }
 
+  try { if (navigator.storage && navigator.storage.persist) navigator.storage.persist(); } catch (_) {}
+
   window.Store = {
     sha256hex,
     list: async () => { try { return (await tx('readonly', s => s.getAll())) || []; } catch (_) { return []; } },
