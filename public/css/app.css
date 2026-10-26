@@ -14,7 +14,7 @@
 }
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
 html,body{margin:0;height:100%;background:var(--bg);color:var(--fg);font:15px/1.35 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;overscroll-behavior:none;-webkit-user-select:none;user-select:none;-webkit-touch-callout:none}
-#app{height:var(--vh);position:relative;overflow:hidden}
+#app{position:fixed;top:0;left:0;right:0;bottom:0;overflow:hidden}
 .hidden{display:none!important}
 .screen{display:none;position:absolute;inset:0;overflow-y:auto;padding:calc(10px + var(--sat)) calc(12px + var(--sar)) calc(16px + var(--sab)) calc(12px + var(--sal))}
 .screen.active{display:block}
