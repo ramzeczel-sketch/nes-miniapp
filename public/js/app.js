@@ -449,6 +449,11 @@
     }
   });
 
+  // после сворачивания: вернуть звук
+  document.addEventListener('visibilitychange', () => {
+    if (!document.hidden && state.play && state.play.emu) { try { state.play.emu.initAudio(); } catch (_) {} }
+  });
+
   // ---------- старт ----------
   async function init() {
     try { state.config = await (await fetch('/api/config')).json(); } catch (_) {}

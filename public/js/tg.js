@@ -35,7 +35,10 @@
 
   function applyViewport() {
     const root = document.documentElement.style;
-    const h = wa && (wa.viewportStableHeight || wa.viewportHeight);
+    // При сворачивании/разворачивании Telegram может на миг отдать крошечную высоту — игнорируем такие значения.
+    const inner = window.innerHeight || 0;
+    let h = wa && (wa.viewportStableHeight || wa.viewportHeight);
+    if (!h || h < 300 || (inner > 300 && h < inner * 0.6)) h = inner > 300 ? inner : 0;
     root.setProperty('--tg-vh', h ? h + 'px' : '100vh');
     // safe areas (Bot API 8.0+)
     try {
@@ -58,7 +61,12 @@
     wa.onEvent && wa.onEvent('safeAreaChanged', applyViewport);
     wa.onEvent && wa.onEvent('contentSafeAreaChanged', applyViewport);
   }
+  const reapply = () => { applyViewport(); setTimeout(applyViewport, 150); setTimeout(applyViewport, 600); setTimeout(applyViewport, 1500); };
   window.addEventListener('resize', applyViewport);
+  window.addEventListener('focus', reapply);
+  window.addEventListener('pageshow', reapply);
+  document.addEventListener('visibilitychange', () => { if (!document.hidden) reapply(); });
+  wa && wa.onEvent && (wa.onEvent('activated', reapply), wa.onEvent('visibilityChanged', reapply));
   applyViewport();
   window.TG = TG;
 })();
