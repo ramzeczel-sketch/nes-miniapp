@@ -1,0 +1,42 @@
+[
+  {
+    "id": "table-tennis",
+    "title": "8-Bit Table Tennis",
+    "file": "table-tennis.nes",
+    "players": 2,
+    "desc": "Настольный теннис для двоих. Вверх/вниз — ракетка, A — подача, Start — начать. До 11 очков.",
+    "author": "Michael Billington",
+    "license": "MIT",
+    "source": "https://github.com/mike42/8bit-table-tennis/releases/tag/v1.0"
+  },
+  {
+    "id": "double-action-blaster-guys",
+    "title": "Double Action Blaster Guys",
+    "file": "double-action-blaster-guys.nes",
+    "players": 2,
+    "desc": "Аркадный платформер в духе Bubble Bobble: 52 уровня, можно играть вдвоём (кооператив). Start — начать.",
+    "author": "NovaSquirrel",
+    "license": "zlib",
+    "source": "https://github.com/NovaSquirrel/DABG/releases/tag/v2"
+  },
+  {
+    "id": "thwaite",
+    "title": "Thwaite",
+    "file": "thwaite.nes",
+    "players": 2,
+    "desc": "Сбивайте падающие ракеты фейерверками и защищайте городок. Второй игрок — второй прицел.",
+    "author": "Damian Yerrick",
+    "license": "GPL-3.0-or-later",
+    "source": "https://github.com/pinobatch/thwaite-nes/releases/tag/v0.04"
+  },
+  {
+    "id": "rhde-furniture-fight",
+    "title": "RHDE: Furniture Fight",
+    "file": "rhde-furniture-fight.nes",
+    "players": 2,
+    "desc": "Стратегия в реальном времени для двоих: обставьте дом, вломитесь к сопернику и восстановите стены.",
+    "author": "Damian Yerrick (идея: NovaSquirrel, Sean Sells)",
+    "license": "GNU All-Permissive",
+    "source": "https://github.com/pinobatch/rhde-nes/releases/tag/v0.07"
+  }
+]
