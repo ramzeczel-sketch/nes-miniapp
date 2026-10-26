@@ -127,7 +127,7 @@ wss.on('connection', (ws, req) => {
       case 'start':  { const r = lobbies.start(ws); if (r.err) fail('start_' + r.err); break; }
       case 'stop':   { const r = lobbies.stop(ws); if (r.err) fail(r.err); break; }
       case 'leave':  lobbies.leave(ws); send({ t: 'left' }); break;
-      case 'ping':   send({ t: 'pong', ts: m.ts }); break;
+      case 'ping':   if (Number.isFinite(m.rtt) && m.rtt >= 0 && m.rtt < 5000) ws.rtt = m.rtt; send({ t: 'pong', ts: m.ts }); break;
     }
   });
 

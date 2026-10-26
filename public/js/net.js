@@ -18,7 +18,8 @@
         this.reconnectDelay = 500;
         ws.send(JSON.stringify({ t: 'hello', name: TG.userName(), initData: TG.initData }));
         clearInterval(this._pingT);
-        this._pingT = setInterval(() => this.send({ t: 'ping', ts: Date.now() }), 5000);
+        setTimeout(() => this.send({ t: 'ping', ts: Date.now(), rtt: this.rtt }), 600);
+        this._pingT = setInterval(() => this.send({ t: 'ping', ts: Date.now(), rtt: this.rtt }), 2000);
       };
       ws.onmessage = (ev) => {
         let m; try { m = JSON.parse(ev.data); } catch (_) { return; }

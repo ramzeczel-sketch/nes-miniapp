@@ -56,7 +56,7 @@ function client(name) {
 
   a.send({ t: 'start' });
   const sa = await a.wait(m => m.t === 'start'), sb = await b.wait(m => m.t === 'start');
-  ok(sa.delay === 4 && sb.delay === 4, 'start broadcast to both, input delay = ' + sa.delay);
+  ok(sa.delay >= 6 && sa.delay <= 16 && sa.delay === sb.delay, 'start broadcast to both, input delay = ' + sa.delay);
 
   // lockstep input exchange: 600 frames each way (~60 msg/s per side)
   let gotA = 0, gotB = 0, bad = 0;

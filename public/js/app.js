@@ -230,7 +230,7 @@
     requestAnimationFrame(loop);
     let dt = now - p.last; p.last = now;
     if (dt > 250) dt = STEP;
-    p.acc = Math.min(p.acc + dt, STEP * 5);
+    p.acc = Math.min(p.acc + dt, STEP * 3);
 
     if (p.mode === 'solo') {
       while (p.acc >= STEP) { emu.frame(Pad.p1(), Pad.p2local()); p.acc -= STEP; }
@@ -261,7 +261,7 @@
       if (!p.stalledSince) p.stalledSince = t;
       const d = t - p.stalledSince;
       if (d > 8000) overlay('Нет связи с другом…\nМожно выйти и вернуться в лобби');
-      else if (d > 1200) overlay('⏳ Ждём ввод друга…');
+      else if (d > 3000) overlay('⏳ Ждём ввод друга…');
     } else if (p.stalledSince) { p.stalledSince = 0; if (!p.desync) overlay(null); }
     p.info = p.info || 0;
     if (t - p.info > 1000) {
@@ -297,7 +297,7 @@
       const buf = state.romCache.get(l.game.hash);
       if (!buf) throw new Error('Нет файла игры');
       emu.load(buf);
-      const delay = m.delay || 4;
+      const delay = m.delay || 8;
       const ns = { slot: state.slot, delay, f: 0, local: new Map(), remote: new Map(), sums: new Map(), peerSums: new Map() };
       for (let i = 0; i < delay; i++) { ns.local.set(i, 0); ns.remote.set(i, 0); }
       beginPlay({ mode: 'net', title: l.game.title, net: ns });
