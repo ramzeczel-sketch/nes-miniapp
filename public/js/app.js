@@ -451,7 +451,7 @@
 
   // после сворачивания: вернуть звук
   document.addEventListener('visibilitychange', () => {
-    if (!document.hidden && state.play && state.play.emu) { try { state.play.emu.initAudio(); } catch (_) {} }
+    if (!document.hidden && state.play) { try { emu.initAudio(); } catch (_) {} }
   });
 
   // ---------- старт ----------
